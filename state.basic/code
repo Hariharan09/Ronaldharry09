@@ -1,0 +1,45 @@
+import React, { Component } from 'react';
+import { View, Image, StyleSheet, Button } from 'react-native';
+
+class DisplayAnImageWithStyle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      num: 0,
+    };
+  }
+
+  changeVal() {
+    this.setState({
+      num: this.state.num + 1,
+    });
+  }
+
+  changenum() {
+    this.setState({
+      num: this.state.num - 1,
+    });
+  }
+  render() {
+    console.log('render');
+    return (
+      <View
+        style={{
+          alignItems: 'center',
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          marginVertical: 250,
+        }}>
+        <View style={{ height: 50, width: 50 }}>
+          <Button title="-" onPress={() => this.changenum()} />
+        </View>
+        <View>{this.state.num}</View>
+        <View style={{ height: 50, width: 50 }}>
+          <Button title="+" onPress={() => this.changeVal()} />
+        </View>
+      </View>
+    );
+  }
+}
+
+export default DisplayAnImageWithStyle;
