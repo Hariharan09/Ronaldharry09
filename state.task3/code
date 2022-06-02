@@ -1,0 +1,53 @@
+
+import React, { Component } from 'react';
+import { AppRegistry, View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button } from 'react-native';
+
+class DisplayAnImage extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      textInput : "" ,
+      array : [] 
+    }
+  } 
+  handleButton = () =>{
+ this.setState({isSh0w:true})
+ this.state.array.push(this.state.textInput)  
+  }
+  
+  render() {
+    // console.log("isshow-->",this.state.isSh0w)
+    return (
+     <View style={{flex:1,alignItems:"center",padding:20, backgroundColor:"lightgreen"}}>
+
+     <TextInput 
+     style={{
+       height:30, 
+       width:150, 
+       borderWidth:2, }} 
+     onChangeText={(Text)=>{ this.setState({textInput:Text})}} 
+     value={this.state.textInput} />
+
+     <TouchableOpacity 
+     style={{
+       height:30, 
+       width:120, 
+       backgroundColor:"dodgerblue", 
+       marginTop:20 }} 
+     onPress={this.handleButton} >
+     
+     <Text style={{marginLeft:40,marginVertical:5}}> Enter </Text>
+     </TouchableOpacity>
+
+     {this.state.array.map((item)=>{
+     return(
+      <View>{item}</View>
+      )
+     })}
+     </View> 
+    ); 
+  }
+}
+
+export default DisplayAnImage;
