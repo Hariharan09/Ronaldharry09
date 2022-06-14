@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import { View, Image, StyleSheet, Button, TouchableOpacity } from 'react-native';
+
+class DisplayAnImageWithStyle extends Component {
+  constructor(props) {
+    console.log("constructor method executed")
+    super(props);
+  //  console.log("constructor called")
+  this.state = {
+    id:0 ,
+    color : "black"
+  }
+  }
+  handlingButton(value){ 
+this.setState({
+   id: value
+   })
+  }
+  handlingColor(bgcolor){
+     this.setState({
+     color: bgcolor 
+   })
+  }
+
+  render() {
+    console.log("render method executed")   
+    return (
+      <View style={{alignItems:"center", backgroundColor:this.state.color, flex:1}}> 
+        <TouchableOpacity style={{ height: 50, width: 50, borderWidth:2, backgroundColor:"pink", marginVertical:10, borderColor:this.state.id==1?"white":"black"}} 
+        onPress = {()=>{{this.handlingButton(1)} {this.handlingColor("pink")}} } >
+        </TouchableOpacity>
+        <TouchableOpacity style={{ height:50, width:50, borderWidth:2, backgroundColor:"grey", marginVertical:10, borderColor:this.state.id==2?"white":"black"}} 
+        onPress = {()=> {{this.handlingButton(2)} {this.handlingColor("grey")}} } >
+        </TouchableOpacity>
+        <TouchableOpacity style={{ height:50, width:50, borderWidth:2, backgroundColor:"yellow", marginVertical:10 ,borderColor:this.state.id==3?"white":"black"}}
+        onPress = {()=>{{this.handlingButton(3)} {this.handlingColor("yellow")}} }>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ height:50, width:50, borderWidth:2, backgroundColor:"orange", marginVertical:10, borderColor:this.state.id==4?"white":"black"}}
+        onPress = {()=>{{this.handlingButton(4)} {this.handlingColor("orange")}} }>  
+        </TouchableOpacity>
+        </View>       
+    ); 
+  } 
+}
+
+export default DisplayAnImageWithStyle;
