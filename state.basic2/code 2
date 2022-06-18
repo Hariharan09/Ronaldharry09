@@ -1,0 +1,67 @@
+import React, { Component } from 'react'; //touch panna border varanumm and retouch panna bordercolor poidanum
+import { View, Image, StyleSheet, Button, TouchableOpacity } from 'react-native';
+
+class DisplayAnImageWithStyle extends Component {
+  constructor(props) {
+    console.log("constructor method executed")
+    super(props);
+  //  console.log("constructor called")
+  this.state = {
+    dispArray : [{color:"orange",isShow:false},
+    {color:"pink",isShow:false},
+    {color:"yellow",isShow:false},
+    {color:"grey",isShow:false}]
+  }
+  }
+  handlingButton(value,index){ 
+    console.log("id--->",value)
+    let tempDispArray=JSON.parse(JSON.stringify(this.state.dispArray)); 
+for(let i = 0 ; i<this.state.dispArray.length; i++){
+  if(this.state.dispArray[i].color===value){
+    tempDispArray[i].isShow=!this.state.dispArray[i].isShow
+this.setState({dispArray:tempDispArray})
+    }
+  }
+  }
+
+
+  render() {
+    console.log("render method executed")   
+    return (
+      
+      // <View style={{alignItems:"center", backgroundColor:"black", flex:1}}> 
+      //   <TouchableOpacity style={{ height: 50, width: 50, borderWidth:2, backgroundColor:"pink", marginVertical:10, borderColor:this.state.id==1?"white":"black"}} 
+      //   onPress = {()=>{this.handlingButton(1)} } >
+      //   </TouchableOpacity>
+      //   <TouchableOpacity style={{ height:50, width:50, borderWidth:2, backgroundColor:"grey", marginVertical:10, borderColor:this.state.id==2?"white":"black"}} 
+      //   onPress = {()=> {this.handlingButton(2)} } >
+      //   </TouchableOpacity>
+      //   <TouchableOpacity style={{ height:50, width:50, borderWidth:2, backgroundColor:"yellow", marginVertical:10 ,borderColor:this.state.id==3?"white":"black"}}
+      //   onPress = {()=>{this.handlingButton(3)} }>
+      //   </TouchableOpacity>
+      //   <TouchableOpacity style={{ height:50, width:50, borderWidth:2, backgroundColor:"orange", marginVertical:10, borderColor:this.state.id==4?"white":"black"}}
+      //   onPress = {()=>{this.handlingButton(4)} }>  
+      //   </TouchableOpacity>
+      //   </View>
+
+        <View style={{flex:1,backgroundColor:"black"}}> 
+        {this.state.dispArray.map((el,i)=>{
+          return(
+            <View style={{alignItems:"center"}}>
+            <TouchableOpacity style={{ height:50,
+             width:50, 
+             borderWidth:2,
+              backgroundColor:el.color,
+               marginVertical:10,
+             borderColor:el.isShow===true?"white": "black"}}
+        onPress = {()=>{{this.handlingButton(el.color)} }}>  </TouchableOpacity> </View>
+          )
+        }
+        )}  
+       
+        </View>     
+    ); 
+  } 
+}
+
+export default DisplayAnImageWithStyle;
