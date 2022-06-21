@@ -1,0 +1,94 @@
+import React, { Component } from 'react';
+import {
+  View,
+  TextInput,
+  Image,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+  Alert,
+  Text
+} from 'react-native';
+
+export default class DisplayAnImageWithStyle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+        username:"",
+        emailId:"",
+        password:"",
+        phoneno:"",
+        array:[]
+    };
+  }
+  handleSubmit() {
+        // console.log("data--->",this.data)
+        // alert("Submit Pressed")
+    let data = {
+      username:this.state.username,
+      emailId:this.state.emailId,
+      password:this.state.password,
+      phoneno:this.state.phoneno
+    }
+    this.state.array.push(data) 
+    this.setState({username:""})
+    this.setState({emailId:""})
+    this.setState({password:""})
+    this.setState({phoneno:""})  
+       }
+
+  render() {
+    
+  console.log("array--->",this.state.array)  
+
+    console.log('render method executed ');
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
+        <TextInput
+          value={this.state.username}
+          style={styles.input}
+          placeholder="user Name"
+          onChangeText={(val) => this.setState({username:val})}
+          keyboardType="default"
+        />
+         
+        <TextInput
+          value={this.state.emailId}
+          style={styles.input}
+          placeholder="Email Id"
+          onChangeText={(val) => this.setState({emailId:val})}
+          keyboardType="email-address"
+        />
+        <TextInput
+          value={this.state.password}
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry
+          onChangeText={(val) => this.setState({password:val})}
+        />
+        <TextInput
+          value={this.state.phoneno}
+          style={styles.input}
+          placeholder="Phone Number"
+          onChangeText={(val) => this.setState({phoneno:val})}
+          keyboardType="phone-pad"
+          />
+         <Button  
+         title="submit"
+         onPress = {()=>{this.handleSubmit()}}
+         />
+      </View>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    width: 200,
+    borderColor: 'black',
+    borderWidth: 1,
+    marginBottom: 5,
+    paddingLeft:5
+  },
+
+});
